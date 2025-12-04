@@ -15,6 +15,6 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - name: update & upgrade
-        run: sudo apt update && apt upgrade -y && apt install curl -y
+        run: sudo apt update && apt install curl -y
       - name: Download hf
         run: curl -LsSf https://hf.co/cli/install.sh | bash
