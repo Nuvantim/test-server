@@ -24,18 +24,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install curl
           
-      - name: Install huggingface_hub
-        run: pip install huggingface_hub
+      - name: Install huggingface_cli
+        run: curl -LsSf https://hf.co/cli/install.sh | sh
 
       - name: Download model
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          huggingface-cli login --token "$HF_TOKEN"
-          huggingface-cli download \
-            Nuvantim/maxim_sentiment_analysis_model \
-            --revision 7c6fb14452b51ebeb92b2d76fa4de1ad3f1c3ed6 \
-            --local-dir ./model
+          hf auth login --token "$HF_TOKEN" --add-to-git-credential
+          hf download Nuvantim/maxim_sentiment_analysis_model
           
       - name: show model
         run: ls -lh
