@@ -8,13 +8,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: update & upgrade
-        run: sudo apt update && apt install curl -y
-      - name: Download hf
-        run: curl -LsSf https://hf.co/cli/install.sh | bash
+      - name: Check Out
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12.11"
+
+      - name: update & install
+        run: |
+          sudo apt-get update
+          sudo apt-get install curl
+          
+      - name: install hf cli
+        run : curl -LsSf https://hf.co/cli/install.sh | bash
+        
+      - name: download model
+        run : hf download Nuvantim/maxim_sentiment_analysis_model
