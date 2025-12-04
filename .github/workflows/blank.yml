@@ -33,4 +33,4 @@ jobs:
           hf download Nuvantim/maxim_sentiment_analysis_model --local-dir models
           
       - name: show model
-        run: ls -lh
+        run: ls -lh models
