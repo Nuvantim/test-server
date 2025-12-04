@@ -25,7 +25,7 @@ jobs:
           sudo apt-get install curl
           
       - name: Install huggingface_cli
-        run: curl -LsSf https://hf.co/cli/install.sh | sh
+        run: curl -LsSf https://hf.co/cli/install.sh | bash
 
       - name: Download model
         env:
