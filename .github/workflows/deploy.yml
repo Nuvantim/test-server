@@ -34,8 +34,8 @@ jobs:
 
       - name: install pex
         run: |
-        pip install pex
-        pex -r requirements.txt -o app.pex
+          pip install pex
+          pex -r requirements.txt -o app.pex
 
       - name: archive all file
         run: 7z a maxim.7z app.py app.pex models/
