@@ -1,15 +1,15 @@
-name: CI
+name: Upload Server
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./GradioApp
+
     steps:
       - name: Check Out
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install curl
-          
+
       - name: Install huggingface_cli
         run: curl -LsSf https://hf.co/cli/install.sh | bash
 
@@ -31,6 +31,21 @@ jobs:
         run: |
           hf auth login --token "${{ secrets.HF_TOKEN }}"
           hf download Nuvantim/maxim_sentiment_analysis_model maxim-sentiment-models.onnx label_encoder.pkl maxim_fasttext.vec --local-dir models
-          
-      - name: show model
-        run: ls -lh models
+
+      - name: install pex
+        run: |
+        pip install pex
+        pex -r requirements.txt -o app.pex
+
+      - name: archive all file
+        run: 7z a maxim.7z app.py app.pex models/
+
+      - name: transfer file
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "maxim.7z"
+          target: root
