@@ -47,5 +47,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: "maxim.7z"
+          source: "GradioApp/maxim.7z"
           target: /root/
