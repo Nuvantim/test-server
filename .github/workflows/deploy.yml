@@ -37,13 +37,15 @@ jobs:
           pip install pex
           pex -r requirements.txt -o app.pex
 
+      - name: archive all file
+        run: 7z a maxim.7z app.py app.pex models/
+        
       - name: transfer file
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        uses: Dylan700/sftp-upload-action@latest
         with:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          protocol: sftp
-          exclude: |
-             /.git*
+          uploads: |
+            ./GradioApp/maxim.7z => /opt/files
