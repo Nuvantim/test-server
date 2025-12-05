@@ -48,4 +48,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "maxim.7z"
-          target: root
+          target: /root/
