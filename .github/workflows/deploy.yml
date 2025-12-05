@@ -42,10 +42,11 @@ jobs:
 
       - name: transfer file
         uses: appleboy/scp-action@v1
+        timeout-minutes: 10
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "GradioApp/maxim.7z"
-          target: /root/
+          target: /opt/file
