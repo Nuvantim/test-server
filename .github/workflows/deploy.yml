@@ -48,5 +48,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           localPath: './GradioApp/maxim.7z'
-          remotePath: './root/'
+          remotePath: './root'
           
