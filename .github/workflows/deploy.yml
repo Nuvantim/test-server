@@ -41,7 +41,7 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: wearesection/sftp-action@v1.0.0
+        uses: wearesection/sftp-remote@1.0.1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
