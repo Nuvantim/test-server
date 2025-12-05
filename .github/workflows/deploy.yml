@@ -41,11 +41,12 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: Dylan700/sftp-upload-action@latest
+        uses: wearesection/sftp-action@v1.0.0
         with:
-          server: ${{ secrets.HOST }}
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          uploads: |
-            ./GradioApp/maxim.7z => /opt/files
+          localPath: './GradioApp/maxim.7z'
+          remotePath: './opt/file'
+          
