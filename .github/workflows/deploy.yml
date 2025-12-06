@@ -41,12 +41,13 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: cross-the-world/scp-pipeline@v1.2.1
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
-          user: ${{ secrets.USERNAME }}
-          pass: ${{ secrets.PASSWORD }}
-          local: "./GradioApp/app.py"
-          remote: ./root/app.py
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "GradioApp/app.py"
+          target: ./root
           
           
