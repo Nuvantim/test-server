@@ -41,12 +41,12 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        uses: nogsantos/scp-deploy@master
         with:
-          server: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY}}
-          port: ${{secrets.PORT}}
-          local_path: './GradioApp/app.py'
-          remote_path: './app.py'
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          user: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote: ./root
+          src: ./GradioApp/app.py
           
