@@ -41,12 +41,12 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: nogsantos/scp-deploy@master
+        uses: betanzos/scp-upload@v1.1.0
         with:
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
-          user: ${{ secrets.USERNAME }}
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote: ./root
-          src: ./GradioApp/app.py
+          remote_dir: '~'
+          src: './GradioApp/app.py'
           
