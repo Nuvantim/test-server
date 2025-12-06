@@ -48,5 +48,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote_dir: '~'
-          src: './GradioApp/app.py'
+          source: './GradioApp/app.py'
           
