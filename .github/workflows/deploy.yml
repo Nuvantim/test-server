@@ -41,12 +41,11 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: wearesection/sftp-remote@1.0.1
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
-          host: ${{ secrets.HOST }}
+          server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          localPath: './GradioApp/app.py'
-          remotePath: './app.py'
+          local_path: './GradioApp/app.py'
+          remote_path: './app.py'
           
