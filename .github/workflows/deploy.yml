@@ -45,7 +45,7 @@ jobs:
         with:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          ssh_private_key: ${{SSH_PRIVATE_KEY}}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY}}
           port: ${{secrets.PORT}}
           local_path: './GradioApp/app.py'
           remote_path: './app.py'
