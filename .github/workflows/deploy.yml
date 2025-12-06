@@ -47,7 +47,7 @@ jobs:
           user: ${{ secrets.USERNAME }}
           pass: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          known_host: ${{ secrets.KNOWN_HOST }}
+          known_hosts: ${{ secrets.KNOWN_HOST }}
 
           scp: |
             ./GradioApp/app.py => ./root
