@@ -41,12 +41,14 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: srueda99/scp-action@v13
-        with:
+        uses: kangketikonlen/ssh-pipeline@v0.0.3
+        with: 
           host: ${{ secrets.HOST }}
+          user: ${{ secrets.USERNAME }}
+          pass: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }} 
-          destination: "./root"
-          origin: "app.py"
+
+          scp: |
+            ./GradioApp/app.py => ./root
+          
           
