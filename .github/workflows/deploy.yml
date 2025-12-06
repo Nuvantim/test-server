@@ -48,5 +48,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }} 
           destination: "./root"
-          origin: "./GradioApp/app.py"
+          origin: "app.py"
           
