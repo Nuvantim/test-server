@@ -41,15 +41,12 @@ jobs:
         run: 7z a maxim.7z app.py app.pex models/
         
       - name: transfer file
-        uses: kangketikonlen/ssh-pipeline@v0.0.3
-        with: 
+        uses: cross-the-world/scp-pipeline@master
+        with:
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USERNAME }}
           pass: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          known_hosts: ${{ secrets.KNOWN_HOST }}
-
-          scp: |
-            ./GradioApp/app.py => ./root
+          local: "./GradioApp/app.py"
+          remote: ./root/app.py
           
           
